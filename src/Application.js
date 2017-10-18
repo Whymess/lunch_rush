@@ -31,7 +31,7 @@ class Application extends Component {
   }
 
   render() {
-    const { currentUser } = this.state;
+    const { currentUser, restaurants } = this.state;
     return (
       <div className="Application">
         <header className="Application--header">
@@ -44,6 +44,9 @@ class Application extends Component {
           currentUser && 
           <div> 
             <NewRestaurant/>
+            {map(restaurants, (restaurant, key) => {
+              return <p key={key}>{restaurant.name}</p>
+            })}
             <CurrentUser user={currentUser}/>
           </div>
         }

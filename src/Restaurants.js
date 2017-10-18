@@ -35,6 +35,7 @@ class Restaurants extends Component {
         { map(restaurants, (restauarant, key) => (
           <Restaurant
             key={key}
+            user={user}
             {...restauarant}
             handleSelect={() => this.handleSelect(key)}
             handleDeslect={() => this.handleDeslect(key)}
@@ -46,10 +47,5 @@ class Restaurants extends Component {
   }
 }
 
-Restaurants.propTypes = {
-  user: PropTypes.object,
-  restaurantsRef: PropTypes.object,
-  restaurants: PropTypes.object
-};
 
 export default Restaurants;

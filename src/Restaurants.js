@@ -19,7 +19,7 @@ class Restaurants extends Component {
     }
 
   handleDeslect(key){
-    const {currentUser} = this.props.user;
+    const currentUser = this.props.user;
      database.ref('/restaurants')
             .child(key)
             .child('votes')
@@ -37,7 +37,7 @@ class Restaurants extends Component {
             key={key}
             {...restauarant}
             handleSelect={() => this.handleSelect(key)}
-            handleDeselect={() => this.handleDeselect(key)}
+            handleDeslect={() => this.handleDeslect(key)}
           />
         )) }
       </section>

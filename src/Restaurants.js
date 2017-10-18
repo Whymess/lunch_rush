@@ -11,17 +11,16 @@ class Restaurants extends Component {
 
   handleSelect(key){
     const currentUser = this.props.user;
-    database.ref('./restaurants')
+    database.ref('/restaurants')
             .child(key)
             .child('votes')
             .child(currentUser.uid)
-            .set(currentUser.displayName);
-
-  }
+            .set(currentUser.displayName)
+    }
 
   handleDeslect(key){
-    const currentUser = this.props.user;
-     database.ref('./restaurants')
+    const {currentUser} = this.props.user;
+     database.ref('/restaurants')
             .child(key)
             .child('votes')
             .child(currentUser.uid)
@@ -30,13 +29,12 @@ class Restaurants extends Component {
   }
 
   render () {
-     const {restaurants} = this.props;
+     const {restaurants, user} = this.props;
     return (
    <section className="Restaurants">
         { map(restaurants, (restauarant, key) => (
           <Restaurant
             key={key}
-      
             {...restauarant}
             handleSelect={() => this.handleSelect(key)}
             handleDeselect={() => this.handleDeselect(key)}

@@ -5,13 +5,17 @@ import SignIn from './SignIn';
 import NewRestaurant from './NewRestaurant';
 import Restaurants from './Restaurants';
 import './Application.css';
+import map from 'lodash/map';
 
 class Application extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: null
+      currentUser: null,
+      restaurants: null
     }
+
+   this.restaurantsRef = database.ref('/restaurants')
   }
 
   componentDidMount() {
@@ -20,6 +24,10 @@ class Application extends Component {
         console.log(currentUser)
         this.setState({currentUser})
     })
+
+     this.restaurantsRef.on('value', (snapshot) => {
+        this.setState({restaurants: snapshot.val()})
+     })
   }
 
   render() {
